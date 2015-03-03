@@ -4,6 +4,7 @@ require 'watir'
 
 browser = Watir::Browser.new :ff
 browser.goto 'https://www.betfair.com/sport/football'
+
 betfair_football_hometeam = []
 browser.divs(class: 'avb-row-slider').each do |x|
   betfair_football_hometeam << x.span(class: 'home-team-name').text
@@ -16,7 +17,7 @@ end
 
 betfair_football_time = []
 browser.divs(class: 'avb-row-slider').each do |x|
-  betfair_football_time << x.span(class: 'date').text
+  betfair_football_time << x.span(class: 'et-anim-container').span(class: 'extra-time')span(class: 'date').text
 end
 
 betfair_football_homewin = []

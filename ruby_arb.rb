@@ -1,36 +1,71 @@
 #a programme to take in data from many different online betting websites and identify any arbitrages
+#todo = make it so that it can pull in matches from different leagues to the arrays
+#abstract out the thing that actually calculates the arbitrage
+#make it so that it can say where the arb is present 
+#add the thing so that it works with the different ways that the websites display the team names
+#add more wabsites
+#
 
+#require './L1_whill.rb'
+#require './L1_betfair.rb'
+#require './L1_ppower.rb'
+require './arb_calc.rb'
+require './oddconverter.rb'
+#require './whill_team_splitter.rb'
+require './tennis_betfair.rb'
+require './tennis_whill.rb'
+require './tennis_arb_calc.rb'
 require 'watir'
+#require 'selenium/server'
+require 'pry'
 
-browser = Watir::Browser.new :ff
-browser.goto 'https://www.betfair.com/sport/football'
+@betfair_browser_tennis = Watir::Browser.new#:ff
+@whill_browser_tennis = Watir::Browser.new#:ff
 
-betfair_football_hometeam = []
-browser.divs(class: 'avb-row-slider').each do |x|
-  betfair_football_hometeam << x.span(class: 'home-team-name').text
-end
+#binding.pry
 
-betfair_football_awayteam = []
-browser.divs(class: 'avb-row-slider').each do |x|
-  betfair_football_awayteam << x.span(class: 'away-team-name').text
-end
+tennis_betfair
+tennis_whill
 
-betfair_football_time = []
-browser.divs(class: 'avb-row-slider').each do |x|
-  betfair_football_time << x.span(class: 'et-anim-container').span(class: 'extra-time')span(class: 'date').text
-end
+binding.pry
 
-betfair_football_homewin = []
-browser.divs(class: 'avb-row-slider').each do |x|
-      betfair_football_homewin << x.li(class: 'sel-0').text
-end
 
-betfair_football_awaywin = []
-browser.divs(class: 'avb-row-slider').each do |x|
-      betfair_football_awaywin << x.li(class: 'sel-2').text
-end
 
-betfair_football_draw = []
-browser.divs(class: 'avb-row-slider').each do |x|
-      betfair_football_draw << x.li(class: 'sel-1').text
-end
+
+
+
+
+#@server  = Selenium::Server.new('./selenium-server-standalone-2.0b2.jar', :background => true)
+#@browser = Watir::Browser.new(:remote, :url => "http://127.0.0.1:4444/wd/hub", :desired_capabilities => :htmlunit)
+
+
+#@whmatch = whill_L1
+#@bfmatch = bfair_L1
+#@ppmatch = l1_ppower
+
+
+#puts arb_calc
+#binding.pry
+# whmatch.each do |whmatch|
+#   bfmatch.each do |bfmatch|
+#     ppmatch.each do |ppmatch|
+#       if (bfmatch[0] == whmatch[0]) && (bfmatch[1] == whmatch[1]) && (bfmatch[2] == whmatch[2])
+#         if (1/whmatch[3]) + (1/whmatch[4]) + (1/bfmatch[5]) < 1
+#           puts 'there is an arb present'
+#         elsif (1/whmatch[3]) + (1/bfmatch[4]) + (1/whmatch[5]) < 1
+#           puts 'there is an arb present'
+#         elsif (1/bfmatch[3]) + (1/whmatch[4]) + (1/whmatch[5]) < 1
+#           puts 'there is an arb present'
+#         elsif (1/whmatch[3]) + (1/bfmatch[4]) + (1/bfmatch[5]) < 1
+#           puts 'there is an arb present'
+#         elsif (1/bfmatch[3]) + (1/whmatch[4]) + (1/bfmatch[5]) < 1
+#           puts 'there is an arb present'
+#         elsif (1/bfmatch[3]) + (1/bfmatch[4]) + (1/whmatch[5]) < 1
+#           puts 'there is an arb present'
+#         else
+#           puts 'there is no arb present'
+#         end          
+#       end
+#     end
+#   end
+# end

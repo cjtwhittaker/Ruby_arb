@@ -42,3 +42,5 @@ williamhill_football_draw = []
 browser.trs(class: 'rowOdd').each do |z|
   williamhill_football_draw << z[5].text
 end
+
+

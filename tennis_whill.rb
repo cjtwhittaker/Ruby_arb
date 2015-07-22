@@ -22,13 +22,9 @@ def tennis_whill_css
     @whill_tennis_odds_a = oddconverter row[3].text
     @whill_tennis_odds_b = oddconverter row[5].text
     puts i 
+#    puts row.text
     i = i + 1
-    @whill_tennis_match << [row[1].text.match(/\d{2}:\d{2}/)[0], @whill_tennis_odds_a, players[1], players[2], @whill_tennis_odds_b]
-
-    begin
-      rescue Exception => e    
-    end
-
+    @whill_tennis_match << [row[1].text.match(/(?:\d{2}:\d{2}|\d+-\d+)/)[0], @whill_tennis_odds_a, players[1], players[2], @whill_tennis_odds_b]
   end 
 end
 

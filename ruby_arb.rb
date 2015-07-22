@@ -6,17 +6,14 @@
 #add more wabsites
 #
 
-#require './L1_whill.rb'
-#require './L1_betfair.rb'
-#require './L1_ppower.rb'
-require './arb_calc.rb'
 require './oddconverter.rb'
-#require './whill_team_splitter.rb'
 require './tennis_betfair.rb'
 require './tennis_whill.rb'
-require './tennis_arb_calc.rb'
+require './arb_calc.rb'
+#require './tennis_arb_calc.rb'
+
 require 'watir'
-#require 'selenium/server'
+require 'selenium/server'
 require 'pry'
 
 @betfair_browser_tennis = Watir::Browser.new#:ff
@@ -24,15 +21,17 @@ require 'pry'
 
 #binding.pry
 
-tennis_betfair
-tennis_whill
 
 binding.pry
 
 
+tennis_betfair_css
+tennis_whill_css
 
 
 
+@betfair_browser_tennis.close
+@whill_browser_tennis.close
 
 
 #@server  = Selenium::Server.new('./selenium-server-standalone-2.0b2.jar', :background => true)

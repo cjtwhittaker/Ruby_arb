@@ -10,9 +10,10 @@ def tennis_arb_calc
   @whill_tennis_match.each do |whill|
     betfair_tennis_matches_decimal.each do |bfair|
 
-      if whill[2] == bfair[0] && whill[3] == bfair[1] && whill[0] == bfair[2] && ((((1/whill[1)+(1/bfair[4])) < 0 ) || (((1/whill[4])+(1/bfair[3])) < 0))
-       puts 'an arbitrage is present!!!!'
+      if whill[2] == bfair[0] && whill[3] == bfair[1] && whill[0] == bfair[2] && (((1/whill[1]+(1/bfair[4])) < 0 ) || (((1/whill[4])+(1/bfair[3])) < 0)) 
+        puts 'an arbitrage is present!!!!'
       end
     end
   end
 end
+
